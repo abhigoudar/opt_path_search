@@ -37,8 +37,8 @@ int main(int argc, char** argv)
                 {
                     if(planner.calc_shortest_time_path()){
                         //
-                        std::string output_file_path = std::filesystem::absolute(
-                            prob_json_file_.substr(0, prob_json_file_.rfind("/")));
+                        std::string output_file_path = 
+                            prob_json_file_.substr(0, prob_json_file_.rfind("/"));
                         output_file_path += "/optimal_actions.json";
                         //
                         planner.echo_shortest_time_path(output_file_path);

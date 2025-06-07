@@ -102,6 +102,12 @@ namespace opt_path_search
         */
         ~PlannerShortestTime();
         /*
+        * @brief checks if a file path exists (for pre c++14/c++17)
+        * @param path to file
+        * @return true if file exists, false otherwise
+        */
+        bool check_file_exists(const std::string file);
+        /*
         * @brief Loads data from JSON files
         * @param fully-resolved path of JSON problem file
         * @param fully-resolved path of JSON list of states file

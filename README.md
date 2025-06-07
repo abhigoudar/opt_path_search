@@ -44,13 +44,15 @@ LaValle, S. M. (2006). Planning algorithms. _Planning Algorithms_, _9780521862_,
 
 ### Installing dependendcies
 
-NOTE: The package has been developed and tested in a Linux-based (Ubuntu 24.04) operating system. Support for Windows and MacOS does not exist.
+NOTE: The package has been developed and tested in a Linux-based (Ubuntu 24.04 and Ubuntu 18.04) operating system. Support for Windows and MacOS does not exist.
 
 The main requirements are `cmake` and `git`, which can be installed as follows
 
 ```bash
 sudo apt install cmake && sudo apt install git
 ```
+Additionally, it is assumed that the host environment supportes `c++14` standard.
+
 
 ### Clone the repository
 

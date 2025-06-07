@@ -12,23 +12,29 @@ namespace opt_path_search
     PlannerShortestTime::~PlannerShortestTime()
     {}
     //
+    bool PlannerShortestTime::check_file_exists(const std::string path)
+    {
+        std::ifstream file(path);
+        return file.good();
+    }
+    //
     bool PlannerShortestTime::load_problem_data(
             const std::string prob_json_file_,
             const std::string states_json_file_,
             const std::string actions_json_file_)
     {
         // Check if the provided JSON files exist in the system
-        if(!std::filesystem::exists(prob_json_file_))
+        if(!check_file_exists(prob_json_file_))
         {
             std::cerr << " File:" << prob_json_file_ << " does not exist";
             return false;
         }
-        if(!std::filesystem::exists(states_json_file_))
+        if(!check_file_exists(states_json_file_))
         {
             std::cerr << " File:" << states_json_file_ << " does not exist";
             return false;
         }
-        if(!std::filesystem::exists(actions_json_file_))
+        if(!check_file_exists(actions_json_file_))
         {
             std::cerr << " File:" << actions_json_file_ << " does not exist";
             return false;

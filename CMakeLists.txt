@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 project(opt_path_search)
 
+set(CMAKE_CXX_STANDARD 14)
+
 include_directories(
     include
 )
