@@ -24,7 +24,7 @@ int main(int argc, char** argv)
         const char* actions_json_file_ = argv[3];
         //
         opt_path_search::PlannerShortestTime planner;
-        //
+        // TODO: Add -h (help) option support
         try
         {
             if(planner.load_problem_data(prob_json_file_,

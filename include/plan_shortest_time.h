@@ -12,27 +12,76 @@
 #include <iostream>
 #include <fstream>
 #include "json.hpp"
+#include <queue>
+#include <set>
 
 namespace opt_path_search
 {
     using json = nlohmann::json;
-    // forward declaration
-    template <typename CostType> struct ActionInfo;
-    template <typename CostType> std::ostream& operator<<(std::ostream& os, const ActionInfo<CostType> a);
     // Structure for holding action-related attributes
     // We treat time as cost in this setting.
     // Shortest time -> Lowest cost
-    template <typename CostType>
     struct ActionInfo{
+        // name of this action
+        std::string name;
         // starting state for this action
         std::string state_start;
         // goal state for this action
         std::string state_end;
         // cost associated with this action
-        CostType cost;
-        // overload ostream for custom Action structure
-        friend std::ostream& operator<< <CostType>(std::ostream& os, const ActionInfo<CostType> a);
+        uint32_t cost;
     };
+    // alias for shared pointer for type StateInfo
+    using ActionInfoPtr = std::shared_ptr<ActionInfo>;
+    //
+    #define NULL_STATE_STR "NULL"
+    //
+    struct StateInfo
+    {
+        StateInfo() = delete;
+        //
+        StateInfo(const StateInfo& other)
+        {
+            name = other.name;
+            cost_from_start = other.cost_from_start;
+            action_list = other.action_list;
+            prev_state = other.prev_state;
+        }
+        //
+        StateInfo(const std::string name_)
+        {
+            name = name_;
+            cost_from_start = std::numeric_limits<uint32_t>::max();
+            action_list.clear(); 
+            prev_state = NULL_STATE_STR;
+        }
+        //
+        std::string name; // name of this state
+        std::string prev_state; // previous lowest cost state
+        uint32_t cost_from_start; // cost of reaching this state from start_state
+        std::vector<std::string> action_list; // list of actions from this vertex
+    };
+    //
+    // alias for shared pointer for type StateInfo
+    using StateInfoPtr = std::shared_ptr<StateInfo>;
+    // 
+    // Function to compare costs to reach two states
+    // 
+    struct StateCostCompare{
+        bool operator()(const StateInfo v1, const StateInfo v2){
+            return v1.cost_from_start > v2.cost_from_start;
+        }
+        //
+        bool operator()(const StateInfoPtr& v1, const StateInfoPtr& v2){
+            return v1->cost_from_start > v2->cost_from_start;
+        }
+    };
+    // Container to store states.
+    // The above function ensures states are
+    // stored with decreasing cost.
+    using StateQueue = std::priority_queue<StateInfoPtr,
+        std::vector<StateInfoPtr>, StateCostCompare>;
+
     //
     class PlannerShortestTime{
         public:
@@ -78,11 +127,13 @@ namespace opt_path_search
         //
         std::string start_state, goal_state;
         //
-        std::vector<std::string> list_of_states;
+        std::set<std::string> list_of_states;
         //
-        std::map<std::string, ActionInfo<int>> action_info_map;
+        std::map<std::string, ActionInfoPtr> action_info_map;
         //
-        std::map<std::string, std::vector<std::string>> state_action_map;
+        std::map<std::string, StateInfoPtr> state_info_map;
+        //
+        std::vector<std::string> shortest_path;
         //
         bool prob_data_valid;
     }; // class PlannerShortTime
