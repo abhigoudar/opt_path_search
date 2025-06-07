@@ -46,6 +46,7 @@ namespace opt_path_search
             cost_from_start = other.cost_from_start;
             action_list = other.action_list;
             prev_state = other.prev_state;
+            opt_action = other.opt_action;
         }
         //
         StateInfo(const std::string name_)
@@ -54,10 +55,12 @@ namespace opt_path_search
             cost_from_start = std::numeric_limits<uint32_t>::max();
             action_list.clear(); 
             prev_state = NULL_STATE_STR;
+            opt_action = NULL_STATE_STR;
         }
         //
         std::string name; // name of this state
         std::string prev_state; // previous lowest cost state
+        std::string opt_action; // optimal action to previous state
         uint32_t cost_from_start; // cost of reaching this state from start_state
         std::vector<std::string> action_list; // list of actions from this vertex
     };
@@ -133,9 +136,11 @@ namespace opt_path_search
         //
         std::map<std::string, StateInfoPtr> state_info_map;
         //
-        std::vector<std::string> shortest_path;
+        std::deque<std::string> shortest_path;
+        std::deque<std::string> optimal_actions;
         //
         bool prob_data_valid;
+        std::string output_file_path;
     }; // class PlannerShortTime
 
 } // namespace opt_path_search
