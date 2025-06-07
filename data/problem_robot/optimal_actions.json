@@ -1,14 +1,1 @@
-{
-    "actions": [
-        "stop_drill",
-        "asmb_to_tool4",
-        "tool_xchg10",
-        "tool_to_chg_e",
-        "quick_charge",
-        "chg_to_tool_c",
-        "tool_xchg2",
-        "tool_to_asmb2",
-        "start_assembly"
-    ],
-    "cost": 46
-}
+{"actions":["stop_drill","asmb_to_tool4","tool_xchg10","tool_to_chg_e","quick_charge","chg_to_tool_c","tool_xchg2","tool_to_asmb2","start_assembly"],"cost":46}

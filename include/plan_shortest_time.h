@@ -79,9 +79,8 @@ namespace opt_path_search
             return v1->cost_from_start > v2->cost_from_start;
         }
     };
-    // Container to store states.
-    // The above function ensures states are
-    // stored with decreasing cost.
+    // Container to store states. The above function (StateCostCompare)
+    // ensures states arr stored with decreasing cost from start.
     using StateQueue = std::priority_queue<StateInfoPtr,
         std::vector<StateInfoPtr>, StateCostCompare>;
 
@@ -113,14 +112,15 @@ namespace opt_path_search
         */
         bool validate_problem_data();
         /*
-        * @brief calculate the shortes time path
+        * @brief calculate the shortes time path using Dijkstra's method
         * @return True if path was caculated, False otherwise
         */
         bool calc_shortest_time_path();
         /*
         * @brief prints the shortes time path
+        * @param fully-resolved path for output JSON data
         */
-        void echo_shortest_time_path();
+        void echo_shortest_time_path(const std::string);
         //
         private:
         /*
@@ -129,18 +129,18 @@ namespace opt_path_search
         void echo_problem_data();
         //
         std::string start_state, goal_state;
-        //
+        // list of states
         std::set<std::string> list_of_states;
-        //
+        // container for action-related info
         std::map<std::string, ActionInfoPtr> action_info_map;
-        //
+        // container for state-related info
         std::map<std::string, StateInfoPtr> state_info_map;
-        //
+        // container for states in the shortest path
         std::deque<std::string> shortest_path;
+        // container for optimal actions for shortest path
         std::deque<std::string> optimal_actions;
-        //
+        // flag indicating if data is valid
         bool prob_data_valid;
-        std::string output_file_path;
     }; // class PlannerShortTime
 
 } // namespace opt_path_search

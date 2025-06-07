@@ -3,15 +3,9 @@
 namespace opt_path_search
 {
     using json = nlohmann::json;
-    //
-    std::ostream& operator<<(std::ostream& os, const ActionInfoPtr action) { 
-
-        return os;
-    }
     // /
     PlannerShortestTime::PlannerShortestTime()
     {
-        //
         prob_data_valid = false;
     }
     //
@@ -44,10 +38,6 @@ namespace opt_path_search
             << " Problem: " << prob_json_file_ << std::endl
             << " States: " << states_json_file_ << std::endl
             << " Actions: " << actions_json_file_ << std::endl;
-        //
-        output_file_path = std::filesystem::absolute(
-            prob_json_file_.substr(0, prob_json_file_.rfind("/")));
-        output_file_path += "/optimal_actions.json";
         //
         try
         {
@@ -144,6 +134,7 @@ namespace opt_path_search
             std::cerr << " Problem data not validated yet.\n";
             return false;
         }
+        //
         try
         {
             //
@@ -240,7 +231,8 @@ namespace opt_path_search
         }
     }
     //
-    void PlannerShortestTime::echo_shortest_time_path()
+    void PlannerShortestTime::echo_shortest_time_path(
+        const std::string output_file_path)
     {
         //
         std::cout << "\n\n Done calculating shortest path \n\n";
