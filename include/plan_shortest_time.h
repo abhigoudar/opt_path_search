@@ -17,6 +17,9 @@
 
 namespace opt_path_search
 {
+    //
+    #define NULL_STATE_STR "NULL"
+    //
     using json = nlohmann::json;
     // Structure for holding action-related attributes
     // We treat time as cost in this setting.
@@ -34,8 +37,10 @@ namespace opt_path_search
     // alias for shared pointer for type StateInfo
     using ActionInfoPtr = std::shared_ptr<ActionInfo>;
     //
-    #define NULL_STATE_STR "NULL"
-    //
+    // Structure for holding state-related attributes.
+    // The optimal previous state, action, and cost from start
+    // for this state are tored.
+    // cost from start -> time from start
     struct StateInfo
     {
         StateInfo() = delete;
@@ -84,7 +89,8 @@ namespace opt_path_search
     using StateQueue = std::priority_queue<StateInfoPtr,
         std::vector<StateInfoPtr>, StateCostCompare>;
 
-    //
+    // Class with necessary methods for calculating
+    // the shortest time path
     class PlannerShortestTime{
         public:
         /*

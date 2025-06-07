@@ -148,6 +148,9 @@ namespace opt_path_search
             //
             state_visited_.clear();
             // TODO: Add max number of iterations
+            // The following loop implements Dijkstra's algorithm
+            // Nodes and States are used interchangeably
+            // Actions and Edges are used interchangeably
             while(!state_queue_.empty() &&
                 state_visited_ != list_of_states)
             {
@@ -155,7 +158,7 @@ namespace opt_path_search
                 const StateInfoPtr curr_vertex_info_ = state_queue_.top();
                 state_queue_.pop();
                 //
-                // Get neighbours
+                // Get neighbours of this node
                 for(const auto& action_  : curr_vertex_info_->action_list)
                 {
                     const ActionInfoPtr action_info_ = action_info_map[action_];
@@ -209,7 +212,8 @@ namespace opt_path_search
             }
             //
             std::string cv_ = goal_state;
-            //
+            // Traverse backwards from goal to store
+            // the optimal path and the actions
             while(cv_ != start_state)
             {
                 // TODO: handle the bottom case

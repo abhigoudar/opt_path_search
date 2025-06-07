@@ -1,3 +1,9 @@
+The project depends on json library. The corresponding license can be found here
+
+https://github.com/nlohmann/json/blob/develop/LICENSE.MIT
+
+The rest of the content is licensed as per following terms.
+
 MIT License
 
 Copyright (c) 2025 Abhishek Goudar
