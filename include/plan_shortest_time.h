@@ -6,6 +6,12 @@
 
  * -------------------------------------------------------------------------- */
 
+/**
+ * @file    plan_shortest_time.h
+ * @brief   Algorithm for calculating shortest time in a graph
+ * @author  Abhishek Goudar
+ */
+
 #ifndef _PLAN_SHORT_TIME_HEADER_H_
 #define _PLAN_SHORT_TIME_HEADER_H_
 
@@ -15,32 +21,30 @@
 #include <queue>
 #include <set>
 
+
 namespace opt_path_search
 {
     //
     #define NULL_STATE_STR "NULL"
     //
     using json = nlohmann::json;
-    // Structure for holding action-related attributes
-    // We treat time as cost in this setting.
-    // Shortest time -> Lowest cost
+  /** 
+   * Structure for holding action-related attributes.
+   * Treats time as cost in this setting: Shortest time -> Lowest cost
+   */
     struct ActionInfo{
-        // name of this action
-        std::string name;
-        // starting state for this action
-        std::string state_start;
-        // goal state for this action
-        std::string state_end;
-        // cost associated with this action
-        uint32_t cost;
+        std::string name; // name of this action 
+        std::string state_start; // starting state for this action
+        std::string state_end; // goal state for this action
+        uint32_t cost; // cost associated with this action
     };
     // alias for shared pointer for type StateInfo
     using ActionInfoPtr = std::shared_ptr<ActionInfo>;
     //
-    // Structure for holding state-related attributes.
-    // The optimal previous state, action, and cost from start
-    // for this state are tored.
-    // cost from start -> time from start
+    /** Structure for holding state-related attributes.
+     * The optimal previous state, action, and cost from start
+     * for this state are stored: cost from start -> time from start
+    */ 
     struct StateInfo
     {
         StateInfo() = delete;
@@ -72,9 +76,9 @@ namespace opt_path_search
     //
     // alias for shared pointer for type StateInfo
     using StateInfoPtr = std::shared_ptr<StateInfo>;
-    // 
-    // Function to compare costs to reach two states
-    // 
+    /** 
+    *  Functor to compare costs to reach two states
+    */
     struct StateCostCompare{
         bool operator()(const StateInfo v1, const StateInfo v2){
             return v1.cost_from_start > v2.cost_from_start;
@@ -89,8 +93,9 @@ namespace opt_path_search
     using StateQueue = std::priority_queue<StateInfoPtr,
         std::vector<StateInfoPtr>, StateCostCompare>;
 
-    // Class with necessary methods for calculating
-    // the shortest time path
+    /**
+     * Class with necessary methods for calculating the shortest time path
+     */
     class PlannerShortestTime{
         public:
         /*
@@ -141,18 +146,12 @@ namespace opt_path_search
         void echo_problem_data();
         //
         std::string start_state, goal_state;
-        // list of states
-        std::set<std::string> list_of_states;
-        // container for action-related info
-        std::map<std::string, ActionInfoPtr> action_info_map;
-        // container for state-related info
-        std::map<std::string, StateInfoPtr> state_info_map;
-        // container for states in the shortest path
-        std::deque<std::string> shortest_path;
-        // container for optimal actions for shortest path
-        std::deque<std::string> optimal_actions;
-        // flag indicating if data is valid
-        bool prob_data_valid;
+        std::set<std::string> list_of_states; // list of states
+        std::map<std::string, ActionInfoPtr> action_info_map; // container for action-related info
+        std::map<std::string, StateInfoPtr> state_info_map; // container for state-related info
+        std::deque<std::string> shortest_path; // container for states in the shortest path
+        std::deque<std::string> optimal_actions; // container for optimal actions for shortest path
+        bool prob_data_valid; // flag indicating if data is valid
     }; // class PlannerShortTime
 
 } // namespace opt_path_search
