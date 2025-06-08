@@ -1,0 +1,46 @@
+{
+    "actions": [
+    {
+        "action": "action1",
+        "state_start": "state1",
+        "state_end": "state2",
+        "time": 4
+    },
+    {
+        "action": "action2",
+        "state_start": "state1",
+        "state_end": "state3",
+        "time": 2
+    },
+    {
+        "action": "action3",
+        "state_start": "state2",
+        "state_end": "state3",
+        "time": 5
+    },
+    {
+        "action": "action4",
+        "state_start": "state2",
+        "state_end": "state4",
+        "time": 10
+    },
+    {
+        "action": "action5",
+        "state_start": "state3",
+        "state_end": "state5",
+        "time": 3
+    },
+    {
+        "action": "action6",
+        "state_start": "state5",
+        "state_end": "state4",
+        "time": 4
+    },
+    {
+        "action": "action7",
+        "state_start": "state4",
+        "state_end": "state6",
+        "time": 11
+    }
+    ]
+}

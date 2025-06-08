@@ -1,0 +1,94 @@
+{
+    "actions": [
+    {
+        "action": "action1",
+        "state_start": "A",
+        "state_end": "B",
+        "time": 1
+    },
+    {
+        "action": "action2",
+        "state_start": "A",
+        "state_end": "C",
+        "time": 18
+    },
+    {
+        "action": "action3",
+        "state_start": "B",
+        "state_end": "C",
+        "time": 2
+    },
+    {
+        "action": "action4",
+        "state_start": "B",
+        "state_end": "D",
+        "time": 5
+    },
+    {
+        "action": "action5",
+        "state_start": "C",
+        "state_end": "D",
+        "time": 6
+    },
+    {
+        "action": "action6",
+        "state_start": "B",
+        "state_end": "E",
+        "time": 9
+    },
+    {
+        "action": "action7",
+        "state_start": "D",
+        "state_end": "E",
+        "time": 1
+    },
+    {
+        "action": "action8",
+        "state_start": "D",
+        "state_end": "G",
+        "time": 13
+    },
+    {
+        "action": "action9",
+        "state_start": "C",
+        "state_end": "G",
+        "time": 15
+    },
+    {
+        "action": "action10",
+        "state_start": "G",
+        "state_end": "I",
+        "time": 8
+    },
+    {
+        "action": "action11",
+        "state_start": "C",
+        "state_end": "I",
+        "time": 20
+    },
+    {
+        "action": "action12",
+        "state_start": "E",
+        "state_end": "H",
+        "time": 40
+    },
+    {
+        "action": "action13",
+        "state_start": "G",
+        "state_end": "H",
+        "time": 200
+    },
+    {
+        "action": "action14",
+        "state_start": "H",
+        "state_end": "J",
+        "time": 5
+    },
+    {
+        "action": "action15",
+        "state_start": "I",
+        "state_end": "J",
+        "time": 10
+    }
+    ]
+}
