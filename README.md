@@ -50,12 +50,15 @@ LaValle, S. M. (2006). Planning algorithms. _Planning Algorithms_, _9780521862_,
 
 NOTE: The package has been developed and tested in a Linux-based (Ubuntu 24.04 and Ubuntu 18.04) operating system. Support for Windows and MacOS does not exist.
 
-The main requirements are `cmake` and `git`, which can be installed as follows
+The main requirements are `wget`, `cmake`, and `git`, which can be installed as follows
 
 ```bash
-sudo apt install cmake && sudo apt install git
+sudo apt install cmake
+sudo apt install git
+sudo apt install wget
 ```
-Additionally, it is assumed that the host environment supportes `c++14` standard.
+
+Note that running cmake command requires active internet connection to download JSON realted header file. Additionally, it is assumed that the host environment supportes `c++14` standard.
 
 
 ### Clone the repository
@@ -63,6 +66,8 @@ Additionally, it is assumed that the host environment supportes `c++14` standard
 ```bash
 git clone https://github.com/abhigoudar/opt_path_search.git
 ```
+
+NOTE: If cmake is unable to download JSON file from github archives, please switch to json branch that has the necessary files.
 
 ### Build
 
