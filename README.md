@@ -4,7 +4,7 @@
 
 This repository contains a path planning algorithm based on Dijkstra's method. 
 
-#### Objective: Calculate the shortest time path between the given start and end states.
+#### Objective: Calculate the shortest time path for a robot between the given start and end states.
 
 The problem of time-optimal path planning can be cast as a search problem on a weighted directed acyclic graph, where
 * The states are vertices in a graph,
@@ -13,7 +13,7 @@ The problem of time-optimal path planning can be cast as a search problem on a w
 
 Finding the time-optimal path is then similar to finding the least cost path on the graph (see Section 2.3.1 in Reference [1]).
 
-In the directed acyclic graph (DAG) below, the start state is `state1` and the end state is `state2`. The actions `action1` and `action2` together give the least-time path.
+In the directed acyclic graph (DAG) below, the start state is `state1` and the end state is `state2`. The actions `action1` and `action3` together give the least-time path.
 
 ![Directed Acyclic Graph](./resources/prob_dummy_dag.png)
 
